@@ -1,5 +1,7 @@
 # Pixy
 
+[![Build Status](https://secure.travis-ci.org/NARKOZ/pixy.png)](http://travis-ci.org/NARKOZ/pixy)
+
 Pixy is an API wrapper for Pixiv url shortener - [p.tl](http://p.tl/)
 
 ## Installation
@@ -30,5 +32,5 @@ url.counter
 
 ## Copyright
 
-Copyright (c) 2011 Nihad Abbasov
+Copyright (c) 2011 Nihad Abbasov    
 BSD License.
