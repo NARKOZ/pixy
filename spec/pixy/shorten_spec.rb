@@ -36,6 +36,38 @@ describe Pixy::Shorten do
           subject.counter.should == 12
         end
       end
+
+      context "with empty long url" do
+        it "should raise EmptyLongUrl" do
+          lambda {
+            Pixy.shorten!('API_KEY', '')
+          }.should raise_error(Pixy::EmptyLongUrl, "Missing long URL.")
+        end
+      end
+
+      context "with empty API key" do
+        it "should raise EmptyApiKey" do
+          lambda {
+            Pixy.shorten!('', 'https://github.com/narkoz/pixy')
+          }.should raise_error(Pixy::EmptyApiKey, "Missing API key.")
+        end
+      end
+
+      context "with invalid API key" do
+        it "should raise InvalidApiKey" do
+          lambda {
+            Pixy.shorten!('invalid_API_KEY', 'https://github.com/narkoz/pixy')
+          }.should raise_error(Pixy::InvalidApiKey, "API key is invalid.")
+        end
+      end
+
+      context "with invalid long url" do
+        it "should raise InvalidLongUrl" do
+          lambda {
+            Pixy.shorten!('API_KEY', '^_^')
+          }.should raise_error(Pixy::InvalidLongUrl, "The URL can not be shortened.")
+        end
+      end
     end
   end
 end

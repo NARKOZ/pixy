@@ -1,0 +1,6 @@
+{
+  "status": "invalid long url",
+  "long_url": "^_^",
+  "short_url": "",
+  "counter": 20
+}

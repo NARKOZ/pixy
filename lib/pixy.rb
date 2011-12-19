@@ -1,5 +1,6 @@
 require 'pixy/version'
 require 'pixy/shorten'
+require 'pixy/exceptions'
 require 'net/http'
 require 'json'
 

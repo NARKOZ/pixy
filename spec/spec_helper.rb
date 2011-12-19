@@ -1,15 +1,24 @@
 require 'rspec'
 require 'fakeweb'
 require 'pixy'
+require 'cgi'
 
 FakeWeb.allow_net_connect = false
 
-url_to_shorten = "https%3A%2F%2Fgithub.com%2Fnarkoz%2Fpixy"
-FakeWeb.register_uri(:get,
-        "http://p.tl/api/api_simple.php?key=API_KEY&url=#{url_to_shorten}",
-        :body => {
-          :status     => 'ok',
-          :long_url   => 'https://github.com/narkoz/pixy',
-          :short_url  => 'http://p.tl/Us9R',
-          :counter    => 12
-        }.to_json)
+API_URL = 'http://p.tl/api/api_simple.php'
+url_to_shorten = CGI.escape "https://github.com/narkoz/pixy"
+invalid_url_to_shorten = CGI.escape "^_^"
+
+def load_fixture(name)
+  File.open(File.dirname(__FILE__) + "/fixtures/#{name}.json").read
+end
+
+def fake_url(url, fixture_name)
+  FakeWeb.register_uri(:get, url, :body => load_fixture(fixture_name))
+end
+
+fake_url "#{API_URL}?key=API_KEY&url=#{url_to_shorten}", 'ok'
+fake_url "#{API_URL}?key=API_KEY&url=", 'empty_long_url'
+fake_url "#{API_URL}?key=&url=#{url_to_shorten}", 'empty_api_key'
+fake_url "#{API_URL}?key=invalid_API_KEY&url=#{url_to_shorten}", 'invalid_api_key'
+fake_url "#{API_URL}?key=API_KEY&url=#{invalid_url_to_shorten}", 'invalid_long_url'
