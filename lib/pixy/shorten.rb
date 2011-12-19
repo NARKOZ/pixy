@@ -15,7 +15,7 @@ module Pixy
         self.counter    = result['counter']
         raise_exception self.status unless self.status == 'ok'
       else
-        raise "Server responded with code #{response.code}"
+        raise UnknownError, "Server responded with code #{response.code}"
       end
     end
 

@@ -13,7 +13,7 @@ describe Pixy::Shorten do
   context "when a new short url requested" do
     context "without arguments" do
       it "should raise a required API key error" do
-        lambda { Pixy.shorten }.should raise_error(ArgumentError, "API key is required")
+        lambda { Pixy.shorten }.should raise_error(Pixy::MissingApiKey, "API key is required")
       end
     end
 
