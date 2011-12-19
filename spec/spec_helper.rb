@@ -1,13 +1,16 @@
 require 'rspec'
 require 'fakeweb'
 require 'pixy'
-require 'cgi'
 
 FakeWeb.allow_net_connect = false
 
-API_URL = 'http://p.tl/api/api_simple.php'
-url_to_shorten = CGI.escape "https://github.com/narkoz/pixy"
-invalid_url_to_shorten = CGI.escape "^_^"
+def escape_url(url)
+  URI.escape(url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+end
+
+API_URL                 = 'http://p.tl/api/api_simple.php'
+url_to_shorten          = escape_url("https://github.com/narkoz/pixy")
+invalid_url_to_shorten  = escape_url("^_^")
 
 def load_fixture(name)
   File.open(File.dirname(__FILE__) + "/fixtures/#{name}.json").read

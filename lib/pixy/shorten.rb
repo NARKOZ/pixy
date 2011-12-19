@@ -1,10 +1,10 @@
 module Pixy
   class Shorten
+    API_URL = 'http://p.tl/api/api_simple.php'
     attr_accessor :status, :long_url, :short_url, :counter
 
     def initialize(key, url)
-      uri       = URI('http://p.tl/api/api_simple.php')
-      uri.query = URI.encode_www_form({:key => key, :url => url})
+      uri       = URI "#{API_URL}?key=#{key}&url=#{escape_url(url)}"
       response  = Net::HTTP.get_response(uri)
       result    = JSON.parse(response.body)
 
@@ -36,6 +36,10 @@ module Pixy
       else
         raise UnknownError, "Unknown status error."
       end
+    end
+
+    def escape_url(url)
+      URI.escape(url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
     end
   end
 end
