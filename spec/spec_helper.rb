@@ -5,7 +5,7 @@ require 'pixy'
 FakeWeb.allow_net_connect = false
 
 def escape_url(url)
-  URI.escape(url, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+  URI.encode_www_form_component(url).gsub('+', '%20')
 end
 
 API_URL                 = 'http://p.tl/api/api_simple.php'
