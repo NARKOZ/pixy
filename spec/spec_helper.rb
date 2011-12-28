@@ -9,8 +9,8 @@ def escape_url(url)
 end
 
 API_URL                 = 'http://p.tl/api/api_simple.php'
-url_to_shorten          = escape_url("https://github.com/narkoz/pixy")
-invalid_url_to_shorten  = escape_url("^_^")
+url_to_shorten          = escape_url escape_url("https://github.com/narkoz/pixy")
+invalid_url_to_shorten  = escape_url escape_url("^_^")
 
 def load_fixture(name)
   File.open(File.dirname(__FILE__) + "/fixtures/#{name}.json").read

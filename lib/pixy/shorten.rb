@@ -4,7 +4,7 @@ module Pixy
     attr_accessor :status, :long_url, :short_url, :counter
 
     def initialize(key, url)
-      uri       = URI "#{API_URL}?key=#{key}&url=#{escape_url(url)}"
+      uri       = URI "#{API_URL}?key=#{key}&url=#{escape_url escape_url(url)}"
       response  = Net::HTTP.get_response(uri)
       result    = JSON.parse(response.body)
 
