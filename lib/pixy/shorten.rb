@@ -9,11 +9,11 @@ module Pixy
       result    = JSON.parse(response.body)
 
       if response.code.to_i == 200
-        self.status     = result['status']
-        self.long_url   = result['long_url']
-        self.short_url  = result['short_url']
-        self.counter    = result['counter']
-        raise_exception self.status unless self.status == 'ok'
+        @status     = result['status']
+        @long_url   = result['long_url']
+        @short_url  = result['short_url']
+        @counter    = result['counter']
+        raise_exception @status unless @status == 'ok'
       else
         raise UnknownError, "Server responded with code #{response.code}"
       end
