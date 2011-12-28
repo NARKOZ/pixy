@@ -15,4 +15,12 @@ module Pixy
   def shorten!(key=nil, url='')
     Pixy.shorten(key, url).short_url
   end
+
+  def stats(key=nil, url='^')
+    pixy = Pixy.shorten(key, url)
+    {
+      :calls => pixy.counter,
+      :limit => 1000 - pixy.counter
+    }
+  end
 end
