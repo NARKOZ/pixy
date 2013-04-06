@@ -1,9 +1,10 @@
 module Pixy
-  class EmptyLongUrl < StandardError; end
-  class EmptyApiKey < StandardError; end
-  class ApiLimit < StandardError; end
-  class InvalidApiKey < StandardError; end
-  class InvalidLongUrl < StandardError; end
-  class UnknownError < StandardError; end
-  class MissingApiKey < ArgumentError; end
+  class Error < StandardError; end
+  class EmptyLongUrl < Error; end
+  class EmptyApiKey < Error; end
+  class ApiLimit < Error; end
+  class InvalidApiKey < Error; end
+  class InvalidLongUrl < Error; end
+  class UnknownError < Error; end
+  class MissingApiKey < Error; end
 end

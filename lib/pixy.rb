@@ -5,22 +5,17 @@ require 'net/http'
 require 'json'
 
 module Pixy
-  extend self
-
-  def shorten(key=nil, url='')
+  def self.shorten(key=nil, url='')
     raise MissingApiKey, "API key is required" if key.nil?
-    Pixy::Shorten.new(key, url)
+    Shorten.new(key, url)
   end
 
-  def shorten!(key=nil, url='')
-    Pixy.shorten(key, url).short_url
+  def self.shorten!(key=nil, url='')
+    shorten(key, url).short_url
   end
 
-  def stats(key=nil, url='^')
-    pixy = Pixy.shorten(key, url)
-    {
-      :calls => pixy.counter,
-      :limit => 1000 - pixy.counter
-    }
+  def self.stats(key=nil, url='^')
+    pixy = shorten(key, url) # submit fake url to get API rate limit
+    { :calls => pixy.counter, :limit => 1000 - pixy.counter }
   end
 end

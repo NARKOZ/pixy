@@ -1,7 +1,7 @@
 module Pixy
   class Shorten
     API_URL = 'http://p.tl/api/api_simple.php'
-    attr_accessor :status, :long_url, :short_url, :counter
+    attr_reader :status, :long_url, :short_url, :counter
 
     def initialize(key, url)
       uri       = URI "#{API_URL}?key=#{key}&url=#{escape_url escape_url(url)}"
