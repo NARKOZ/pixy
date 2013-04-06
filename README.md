@@ -1,4 +1,4 @@
-# Pixy [![Build Status](https://secure.travis-ci.org/NARKOZ/pixy.png)](http://travis-ci.org/NARKOZ/pixy)
+# Pixy [![Build Status](https://travis-ci.org/NARKOZ/pixy.png)](http://travis-ci.org/NARKOZ/pixy)
 
 Pixy is an API wrapper for Pixiv url shortener - [p.tl](http://p.tl/)
 
