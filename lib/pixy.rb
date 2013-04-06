@@ -2,7 +2,7 @@ require 'pixy/version'
 require 'pixy/shorten'
 require 'pixy/errors'
 require 'net/http'
-require 'json'
+require 'multi_json'
 
 module Pixy
   def self.shorten(key=nil, url='')

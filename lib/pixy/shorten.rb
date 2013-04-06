@@ -6,7 +6,7 @@ module Pixy
     def initialize(key, url)
       uri       = URI "#{API_URL}?key=#{key}&url=#{escape_url escape_url(url)}"
       response  = Net::HTTP.get_response(uri)
-      result    = JSON.parse(response.body)
+      result    = MultiJson.load(response.body)
 
       if response.code.to_i == 200
         @status     = result['status']

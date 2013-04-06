@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Pixy::VERSION
 
-  gem.add_runtime_dependency 'json'
+  gem.add_dependency 'multi_json', '~> 1.7'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'
