@@ -37,5 +37,5 @@ pixy.counter
 
 ## Copyright
 
-Copyright (c) 2011 Nihad Abbasov    
+Copyright (c) 2011-2013 Nihad Abbasov    
 BSD License.
