@@ -3,7 +3,7 @@ require File.expand_path('../lib/pixy/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Nihad Abbasov"]
-  gem.email         = ["mail@narkoz.me"]
+  gem.email         = ["nihad@42na.in"]
   gem.description   = %q{Pixy is an API wrapper for Pixiv url shortener - p.tl}
   gem.summary       = %q{API wrapper for Pixiv url shortener}
   gem.homepage      = "https://github.com/narkoz/pixy"
